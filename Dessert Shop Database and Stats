@@ -1,0 +1,46 @@
+--Create a dessert shop database for sales on 2022-10-26
+
+CREATE TABLE Sales_20221026 (id INTEGER PRIMARY KEY, item TEXT, quantity_sold INTEGER, price INTEGER, category TEXT);
+
+INSERT INTO Sales_20221026 VALUES
+(1, "Chocolate Covered Strawberry", 20, 2.50, "fruit"),
+(2, "Carmel Candy Apple", 10, 6.50, "fruit"),
+(3, "Chocolate Covered Banana", 13, 4.99, "fruit"),
+(4, "Chocolate Truffles", 5, 1.50, "chocolate"),
+(5, "Strawberry Flavored Rice Crispy", 10, 3.50, "rice crispy"),
+(6, "Vanilla Flavored Rice Crispy", 8, 3.50, "rice crispy"),
+(7, "Brown Butter Cookie", 30, 3.99, "cookie"),
+(8, "Chocolate Chip Cookie", 10, 3.99, "cookie"),
+(9, "Almond Cookie", 5, 2.00, "cookie"),
+(10, "Red Velvet Cookie", 13, 3.99, "cookie"),
+(11, "Macadamia Nut Cookie", 33, 3.99, "cookie"),
+(12, "Ube Cookie", 35, 3.99, "cookie"),
+(13, "Pistachio Ice Cream Bar", 7, 3.50, "ice cream"),
+(14, "Strawberry Ice Cream Bar", 8, 3.50, "ice cream"),
+(15, "White Chocolate Ice Cream Bar", 3, 3.50, "ice cream");
+
+--Display the database ordered by quantity sold in descending order
+SELECT * 
+FROM Sales_20221026 
+ORDER BY (quantity_sold) desc;
+
+--What is the total quantity sold per category? 
+SELECT category, SUM(quantity_sold) 
+FROM Sales_20221026 
+GROUP BY category;
+
+--What items within cookie category sold 30 or more cookies today?
+SELECT item, quantity_sold 
+FROM Sales_20221026 
+WHERE quantity_sold >= 30;
+
+--What is the average price for items in the fruit category?
+SELECT AVG(price) 
+FROM Sales_20221026 
+WHERE category = 'fruit';
+
+--What are the top 5 best selling items today?
+SELECT item, quantity_sold
+FROM Sales_20221026
+ORDER BY quantity_sold desc
+limit 5;
