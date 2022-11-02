@@ -1,4 +1,4 @@
---Create a table of famous actors and related tables
+--Create a table of famous actors and create related tables
 
 CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, full_name TEXT, age INTEGER);
 INSERT INTO actors (full_name, age) VALUES ("Kit Harington", 35);
