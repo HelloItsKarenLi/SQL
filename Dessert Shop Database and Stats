@@ -29,7 +29,7 @@ SELECT category, SUM(quantity_sold)
 FROM Sales_20221026 
 GROUP BY category;
 
---What items within cookie category sold 30 or more cookies today?
+--What items within cookie category sold 30 or more cookies?
 SELECT item, quantity_sold 
 FROM Sales_20221026 
 WHERE quantity_sold >= 30;
@@ -39,7 +39,7 @@ SELECT AVG(price)
 FROM Sales_20221026 
 WHERE category = 'fruit';
 
---What are the top 5 best selling items today?
+--What are the top 5 best selling items?
 SELECT item, quantity_sold
 FROM Sales_20221026
 ORDER BY quantity_sold desc
