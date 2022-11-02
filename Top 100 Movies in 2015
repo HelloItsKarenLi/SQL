@@ -1,5 +1,5 @@
 /* 
-Data used for this project was collected in 2015.
+Data collected in 2015.
 Source: http://www.boxofficemojo.com/alltime/world/ 
 */
 
@@ -121,19 +121,19 @@ SELECT ROUND(AVG(Worldwide)*1000000) AS Avg_Worldwide_Gross
 FROM topmovies;
 
 --What movie had the most overseas gross percentage?
-SELECT title, MAX(OverseasPct) AS Highest_OverseasPct 
+SELECT Title, MAX(OverseasPct) AS Highest_OverseasPct 
 FROM topmovies;
 
---What is the title of the oldest movie on this TOP 100 list?
-SELECT title, MIN(Year) AS Oldest_Year 
+--What is the title of the oldest movie?
+SELECT Title, MIN(Year) AS Oldest_Year 
 FROM topmovies;
 
---List of studios with more than 10 movies on this TOP 100 list. 
+--Display studios with more than 10 movies 
 SELECT Studio, COUNT(*) AS Number_of_Movies 
 FROM topmovies 
 GROUP BY Studio HAVING Number_Of_Movies > 10;
 
---Assigned a rating scale to each movie's overseas percentage and grouped by their rating scale.
+--Assign a rating scale to each movie's overseas percentage and group by rating scale
 SELECT COUNT(*),
 CASE
  WHEN OverseasPct > 0.70 THEN "high"
@@ -143,8 +143,8 @@ CASE
 FROM topmovies
 GROUP BY OverseasPct_Rating;
 
---List of movies from Sony, released after year 2010, and had a high gross overseas percentage.
-SELECT title, studio, year,
+--Display movies from Sony that were released after year 2010 with high gross overseas percentage
+SELECT Title, Studio, Year,
 CASE
  WHEN OverseasPct > 0.70 THEN "high"
  WHEN OverseasPct > 0.60 THEN "average"
