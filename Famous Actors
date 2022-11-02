@@ -1,0 +1,38 @@
+--Create a table of famous actors and related tables
+
+CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, full_name TEXT, age INTEGER);
+INSERT INTO actors (full_name, age) VALUES ("Kit Harington", 35);
+INSERT INTO actors (full_name, age) VALUES ("Blake Lively", 35);
+INSERT INTO actors (full_name, age) VALUES ("Ryan Reynolds", 46);
+INSERT INTO actors (full_name, age) VALUES ("Tom Hanks", 66);
+INSERT INTO actors (full_name, age) VALUES ("Rose Leslie", 35);
+INSERT INTO actors (full_name, age) VALUES ("Rita Wilson", 66);
+INSERT INTO actors (full_name, age) VALUES ("Simu Liu", 33);
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT, actor_id INTEGER, title TEXT);
+INSERT INTO movies (actor_id, title) VALUES (1, "Eternals");
+INSERT INTO movies (actor_id, title) VALUES (2, "The Shallows");
+INSERT INTO movies (actor_id, title) VALUES (3, "Deadpool");
+INSERT INTO movies (actor_id, title) VALUES (4, "Sully");
+INSERT INTO movies (actor_id, title) VALUES (5, "Honeymoon");
+INSERT INTO movies (actor_id, title) VALUES (6, "Jingle All The Way");
+INSERT INTO movies (actor_id, title) VALUES (7, "Shang-Chi");
+
+CREATE TABLE married_couples (id INTEGER PRIMARY KEY AUTOINCREMENT, person1_id INTEGER, person2_id INTEGER);
+INSERT INTO married_couples (person1_id, person2_id) VALUES (1,5);
+INSERT INTO married_couples (person1_id, person2_id) VALUES (2,3);
+INSERT INTO married_couples (person1_id, person2_id) VALUES (4,6);
+
+--Display all actors with the movie they're known for
+SELECT actors.full_name, movies.title
+FROM actors
+JOIN movies
+ON actors.id = movies.actor_id;
+
+--Display married couples
+SELECT a.full_name, b.full_name
+FROM married_couples
+JOIN actors AS a
+ON a.id = married_couples.person1_id
+JOIN actors AS b
+ON b.id = married_couples.person2_id;
