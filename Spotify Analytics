@@ -1,0 +1,48 @@
+/* 
+For this project, I downloaded Spotify (Top 50 Songs in 2021) data from Kaggle.
+Then I created a table to insert Spotify data into and performed analytics on the data using SQL.
+Source: https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?select=spotify_top50_2021.csv
+*/
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+);
+
+--Inserted Spotify data .csv into the table and explored data using the following SQL.
+
+--What is the average popularity for the 10 most danceable songs?
+SELECT AVG(popularity)
+FROM (SELECT popularity FROM BIT_DB.Spotifydata ORDER BY danceability desc LIMIT 10);
+
+--Which Olivia Rodrigo song had the highest popularity?
+SELECT track_name
+FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Olivia Rodrigo' AND popularity IN (SELECT MAX(popularity) FROM BIT_DB.Spotifydata WHERE artist_name = 'Olivia Rodrigo');
+
+--What artists has more than one song on this top 50 list.
+SELECT artist_name, COUNT(*)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+HAVING COUNT(*) >= 2;
+
+--What songs are between 120000 to 180000 milliseconds long and scored more than 90 in popularity?
+SELECT track_name
+FROM BIT_DB.Spotifydata
+WHERE duration_ms between 120000 AND 180000 AND popularity > 90;	
