@@ -1,4 +1,4 @@
---Create multiple related tables and gain insights on data using multiple joins.
+--Create multiple related tables and gain insights by aggregating data.
 
 CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, full_name TEXT, age INTEGER);
 INSERT INTO actors (full_name, age) VALUES ("Kit Harington", 35);
