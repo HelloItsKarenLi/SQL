@@ -1,4 +1,4 @@
---Create a table of famous actors and create related tables
+--Create multiple related tables and gain insights on data using multiple joins.
 
 CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, full_name TEXT, age INTEGER);
 INSERT INTO actors (full_name, age) VALUES ("Kit Harington", 35);
@@ -23,13 +23,13 @@ INSERT INTO married_couples (person1_id, person2_id) VALUES (1,5);
 INSERT INTO married_couples (person1_id, person2_id) VALUES (2,3);
 INSERT INTO married_couples (person1_id, person2_id) VALUES (4,6);
 
---Display all actors with the title of the movie they're known for
+--Display the actor's name and title of the movie they're known for.
 SELECT actors.full_name, movies.title
 FROM actors
 JOIN movies
 ON actors.id = movies.actor_id;
 
---Display married couples
+--Who are the married couples?
 SELECT a.full_name, b.full_name
 FROM married_couples
 JOIN actors AS a
