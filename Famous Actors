@@ -32,7 +32,7 @@ ON actors.id = movies.actor_id;
 --Who are the married couples?
 SELECT a.full_name, b.full_name
 FROM married_couples
-JOIN actors AS a
+JOIN actors a
 ON a.id = married_couples.person1_id
-JOIN actors AS b
+JOIN actors b
 ON b.id = married_couples.person2_id;
