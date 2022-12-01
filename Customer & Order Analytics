@@ -11,8 +11,8 @@ WHERE Product = 'iPhone';
 
 --Select the customer account numbers for all the orders that were placed in Feburary.
 SELECT acctnum
-FROM BIT_DB.customers AS cust
-INNER JOIN BIT_DB.FebSales AS Feb
+FROM BIT_DB.customers cust
+INNER JOIN BIT_DB.FebSales Feb
 ON cust.order_id = Feb.orderID;
 
 --Which product was the cheapest one sold in January, and what was the price?
@@ -33,8 +33,8 @@ GROUP BY Product;
 
 --How many customers ordered more than 2 products at a time in Feburary, and what was the average amount spent for those customers?
 SELECT COUNT(cust.acctnum), AVG(Quantity*price)
-FROM BIT_DB.FebSales As Feb
-LEFT JOIN BIT_DB.customers AS cust
+FROM BIT_DB.FebSales Feb
+LEFT JOIN BIT_DB.customers cust
 ON Feb.orderID = cust.order_id
 WHERE Feb.Quantity > 2;
 
@@ -65,8 +65,8 @@ ON cust.order_id = Feb.orderID;
 
 --What was the average quantity of products purchased per account in February?
 SELECT SUM(Quantity)/COUNT(acctnum)
-FROM BIT_DB.FebSales AS Feb
-LEFt JOIN BIT_DB.customers AS cust
+FROM BIT_DB.FebSales Feb
+LEFT JOIN BIT_DB.customers cust
 ON Feb.orderID = cust.order_id;
 
 --Which product brought in the most revenue in January and how much revenue did it bring in total?
