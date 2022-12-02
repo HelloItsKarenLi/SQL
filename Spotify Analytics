@@ -28,8 +28,13 @@ time_signature integer NOT NULL
 --Inserted Spotify data .csv into the table and explored data using the following SQL.
 
 --What is the average popularity for the 10 most danceable songs?
+WITH danceable_songs_CTE AS (
+SELECT popularity 
+FROM Spotifydata 
+ORDER BY danceability desc LIMIT 10
+)
 SELECT AVG(popularity)
-FROM (SELECT popularity FROM BIT_DB.Spotifydata ORDER BY danceability desc LIMIT 10);
+FROM danceable_songs_CTE;
 
 --Which Olivia Rodrigo song had the highest popularity?
 SELECT track_name
