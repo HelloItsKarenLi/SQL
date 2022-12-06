@@ -1,9 +1,11 @@
 /* 
 For this project, I downloaded a dataset called chinook from break into tech lecture.
-Then I analyzed the data using multiple joins, common table expression, windows function, aggregate functions, and conditions to gather pertinent information from chinook's relational database.
+Then I analyzed the data using multiple joins, common table expression, windows function, 
+aggregate functions, and conditions to gather pertinent information from chinook's relational database.
 */
 
---1. Show the names of each sales agent, hire date, total sales amount, and rank each sales agent based on their total sales amount. The person with most sales will be rank 1.
+--1. Show the names of sales agent, hire date, total sales amount, and rank each sales agent. 
+--   The person with most sales will be rank 1.
 SELECT 
   e.FirstName, 
   e.LastName,  
@@ -31,7 +33,8 @@ WHERE COUNTRY != 'USA';
 SELECT * FROM chinook.customers 
 WHERE Country = 'Brazil';
 
---4. Find the invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+--4. Find the invoices of customers who are from Brazil. 
+--   The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
 SELECT 
   c.FirstName || " " || c.LastName AS FullName, 
   i.InvoiceId, 
@@ -50,7 +53,8 @@ WHERE Title = 'Sales Support Agent';
 SELECT DISTINCT BillingCountry
 FROM chinook.invoices;
 
---7. Provide a query that shows the invoices associated with each sales agent. The resulting table should include the sales agent's full name.
+--7. Provide a query that shows the invoices associated with each sales agent. 
+--   The resulting table should include the sales agent's full name.
 SELECT 
   i.invoiceId, 
   e.FirstName || " " || e.LastName AS SalesAgent_FullName
