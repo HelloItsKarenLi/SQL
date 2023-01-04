@@ -1,7 +1,7 @@
 /* 
-For this project, I downloaded a dataset called chinook from break into tech lecture.
-Then I analyzed the data using multiple joins, common table expression, windows function, 
-aggregate functions, and conditions to gather pertinent information from the dataset.
+For this project, I downloaded a database called chinook from break into tech module.
+Then I analyzed the data in SQLite using multiple joins, common table expression, windows function, 
+aggregate functions, and filter conditions to gather pertinent information from the database.
 */
 
 --1. Show the names of sales agent, hire date, total sales amount, and rank each sales agent. 
