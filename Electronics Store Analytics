@@ -20,7 +20,7 @@ SELECT DISTINCT Product, price
 FROM BIT_DB.JanSales
 WHERE price IN (SELECT MIN(price) FROM BIT_DB.JanSales);
 
---What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products).
+--What is the total revenue for each product sold in January?
 SELECT Product, SUM(Quantity)*price AS total_revenue
 FROM BIT_DB.JanSales
 GROUP BY Product;
